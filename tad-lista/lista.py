@@ -11,7 +11,7 @@ class Lista:
     def __init__(self):
         self.init = None
 
-    def add(self, node):
+    def append(self, node):
 
         if self.init is None:
             self.init = node
@@ -22,6 +22,15 @@ class Lista:
             node_aux = node_aux.next
 
         node_aux.next = node
+
+    def add(self, node):
+
+        if self.init is None:
+            self.init = node
+            return
+
+        node.next = self.init
+        self.init = node
 
     def __str__(self):
         str_aux = '['
@@ -35,8 +44,10 @@ class Lista:
 
 if __name__ == '__main__':
     lista = Lista()
-    lista.add(Node(x=5))
-    lista.add(Node(x=19))
+    lista.append(Node(x=5))
+    lista.append(Node(x=19))
+    print(lista)
     lista.add(Node(x=27))
+    print(lista)
     lista.add(Node(x=1))
     print(lista)
